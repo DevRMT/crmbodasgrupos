@@ -1,4 +1,4 @@
-
+// import $ from 'jquery';
 export default {
     data() {
         return {
@@ -30,27 +30,37 @@ export default {
         },
         redondearArriba(value) {
             var redondear = Math.ceil(value);
-            
+
             return redondear;
         },
         loadAgencias() {
             this.loader = true;
             this.$http
-                .get("https://www.rutamayatravel.com/sur4/admin/apivue/agenciasPeti")
+                .get("https://www.rutamayatravel.com/sur4/admin/apivue/listadoAgenciasConBloqueo")
                 .then(
                     function (response) {
-                      
+
                         this.array_agencias = response.data;
-                        
-                        console.log(this.array_agencias);
-                      
+                        this.array_agencias = response.data;
+                        // console.log(this.array_agencias);
+
+
+                        // $("#customJquery").keyup(function (e) {
+                        //     e.preventDefault();
+                        //     var variable = $("#customJquery").val();
+                        //     console.log(variable);
+                        // });
+
+
                         this.loader = false;
                     },
                     function () {
                         console.log("Error");
+
                     }
                 );
         }
+
     },
     computed: {
         busquedaAgencia: function () {
